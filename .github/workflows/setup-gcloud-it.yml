@@ -20,12 +20,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: "actions/setup-node@v2"
+      - uses: actions/checkout@v3
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
       - id: build
         name: Build dist
         run: |-
@@ -34,7 +34,7 @@ jobs:
       - name: setup-gcloud
         uses: ./
         with:
-          version: "290.0.1"
+          version: "374.0.0"
           service_account_key: ${{ secrets.SETUP_GCLOUD_IT_KEY }}
 
       - name: Integration Tests
@@ -48,12 +48,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: "actions/setup-node@v2"
+      - uses: actions/checkout@v3
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
       - name: Build dependency
         run: |-
           npm ci
@@ -80,12 +80,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: "actions/setup-node@v2"
+      - uses: actions/checkout@v3
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
       - id: build
         name: Build dist
         run: |-
@@ -109,12 +109,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: "actions/setup-node@v2"
+      - uses: actions/checkout@v3
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - id: build
         name: Build dist
@@ -139,9 +139,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: build
         name: Build dist
         run: |-
@@ -163,9 +163,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - id: build
         name: Build dist
         run: |-
@@ -195,17 +195,17 @@ jobs:
   docker:
     if: ${{ github.event_name == 'push' || github.repository == github.event.pull_request.head.repo.full_name && github.actor != 'dependabot[bot]' }}
     name: "setup-gcloud with docker-based steps"
-    runs-on: "ubuntu-20.04"
+    runs-on: "ubuntu-latest"
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
+        operating-system: [ubuntu-latest, windows-latest, macos-latest]
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v3"
 
-      - uses: "actions/setup-node@v2"
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - name: "npm ci"
         run: "npm ci"
@@ -233,7 +233,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-20.04"
+          - "ubuntu-latest"
           - "windows-latest"
           - "macos-latest"
 
@@ -241,11 +241,11 @@ jobs:
       id-token: "write"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: "actions/setup-node@v2"
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - id: build
         name: Build dist
@@ -253,7 +253,7 @@ jobs:
           npm ci
           npm run build
 
-      - uses: google-github-actions/auth@v1
+      - uses: google-github-actions/auth@main
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER_NAME }}
           service_account: ${{ secrets.OIDC_AUTH_SA_EMAIL }}
@@ -274,16 +274,16 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-20.04"
+          - "ubuntu-latest"
           - "windows-latest"
           - "macos-latest"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: "actions/setup-node@v2"
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - id: build
         name: Build dist
@@ -291,7 +291,7 @@ jobs:
           npm ci
           npm run build
 
-      - uses: google-github-actions/auth@v1
+      - uses: google-github-actions/auth@main
         with:
           credentials_json: ${{ secrets.SETUP_GCLOUD_IT_KEY }}
 
@@ -311,22 +311,22 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-20.04"
+          - "ubuntu-latest"
           - "windows-latest"
           - "macos-latest"
 
     steps:
-      - uses: "actions/checkout@v2"
+      - uses: "actions/checkout@v3"
 
-      - uses: "actions/setup-node@v2"
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - id: "build"
         name: "Build dist"
         run: "npm ci && npm run build"
 
-      - uses: "google-github-actions/auth@v1"
+      - uses: "google-github-actions/auth@main"
         with:
           credentials_json: "${{ secrets.SETUP_GCLOUD_IT_KEY }}"
 
@@ -348,7 +348,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-20.04"
+          - "ubuntu-latest"
           - "windows-latest"
           - "macos-latest"
 
@@ -356,11 +356,11 @@ jobs:
       id-token: "write"
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: "actions/setup-node@v2"
+      - uses: "actions/setup-node@v3"
         with:
-          node-version: "12.x"
+          node-version: "16.x"
 
       - id: build
         name: Build dist
@@ -368,7 +368,7 @@ jobs:
           npm ci
           npm run build
 
-      - uses: google-github-actions/auth@v1
+      - uses: google-github-actions/auth@main
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER_NAME }}
           service_account: ${{ secrets.OIDC_AUTH_SA_EMAIL }}
