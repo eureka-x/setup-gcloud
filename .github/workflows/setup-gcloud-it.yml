@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: "actions/setup-node@v2"
@@ -48,7 +48,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: "actions/setup-node@v2"
@@ -80,7 +80,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: "actions/setup-node@v2"
@@ -109,7 +109,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - uses: "actions/setup-node@v2"
@@ -139,7 +139,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - id: build
@@ -163,7 +163,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2
       - id: build
@@ -195,11 +195,11 @@ jobs:
   docker:
     if: ${{ github.event_name == 'push' || github.repository == github.event.pull_request.head.repo.full_name && github.actor != 'dependabot[bot]' }}
     name: "setup-gcloud with docker-based steps"
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-20.04"
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest, windows-latest, macos-latest]
+        operating-system: [ubuntu-20.04, windows-latest, macos-latest]
     steps:
       - uses: "actions/checkout@v2"
 
@@ -233,7 +233,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-latest"
+          - "ubuntu-20.04"
           - "windows-latest"
           - "macos-latest"
 
@@ -274,7 +274,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-latest"
+          - "ubuntu-20.04"
           - "windows-latest"
           - "macos-latest"
 
@@ -311,7 +311,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-latest"
+          - "ubuntu-20.04"
           - "windows-latest"
           - "macos-latest"
 
@@ -348,7 +348,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - "ubuntu-latest"
+          - "ubuntu-20.04"
           - "windows-latest"
           - "macos-latest"
 
