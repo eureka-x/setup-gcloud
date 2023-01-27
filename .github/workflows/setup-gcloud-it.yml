@@ -291,7 +291,7 @@ jobs:
           npm ci
           npm run build
 
-      - uses: google-github-actions/auth@main
+      - uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.SETUP_GCLOUD_IT_KEY }}
 
@@ -326,7 +326,7 @@ jobs:
         name: "Build dist"
         run: "npm ci && npm run build"
 
-      - uses: "google-github-actions/auth@main"
+      - uses: "google-github-actions/auth@v1"
         with:
           credentials_json: "${{ secrets.SETUP_GCLOUD_IT_KEY }}"
 
@@ -368,7 +368,7 @@ jobs:
           npm ci
           npm run build
 
-      - uses: google-github-actions/auth@main
+      - uses: google-github-actions/auth@v1
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER_NAME }}
           service_account: ${{ secrets.OIDC_AUTH_SA_EMAIL }}
