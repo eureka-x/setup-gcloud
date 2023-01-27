@@ -52,7 +52,7 @@ jobs:
 
       # By default, there is no configuration
       - name: 'Check defaults'
-        run: 'npm run integration'
+        run: 'npm run setup-gcloud-it'
         env:
           TEST_ACCOUNT: '(unset)'
           TEST_PROJECT_ID: '(unset)'
@@ -64,7 +64,7 @@ jobs:
           install_components: 'cloud-run-proxy'
 
       - name: 'Check components'
-        run: 'npm run integration'
+        run: 'npm run setup-gcloud-it'
         env:
           TEST_COMPONENTS: 'cloud-run-proxy'
 
@@ -75,7 +75,7 @@ jobs:
           project_id: '${{ secrets.PROJECT_ID }}'
 
       - name: 'Check project ID'
-        run: 'npm run integration'
+        run: 'npm run setup-gcloud-it'
         env:
           TEST_PROJECT_ID: '${{ secrets.PROJECT_ID }}'
 
@@ -90,7 +90,7 @@ jobs:
         uses: './'
 
       - name: 'Check WIF authentication'
-        run: 'npm run integration'
+        run: 'npm run setup-gcloud-it'
         env:
           TEST_ACCOUNT: '${{ secrets.SERVICE_ACCOUNT_EMAIL }}'
           TEST_PROJECT_ID: '${{ secrets.PROJECT_ID }}'
@@ -105,7 +105,7 @@ jobs:
         uses: './'
 
       - name: 'Check SAKE authentication'
-        run: 'npm run integration'
+        run: 'npm run setup-gcloud-it'
         env:
           TEST_ACCOUNT: '${{ secrets.SERVICE_ACCOUNT_EMAIL }}'
           TEST_PROJECT_ID: '${{ secrets.PROJECT_ID }}'
